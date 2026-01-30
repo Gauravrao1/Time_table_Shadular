@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart Timetable Scheduler</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h2>Smart Classroom & Timetable Scheduler</h2>
+
+    <section>
+      <h3>Settings</h3>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+        <div>
+          <label>Backend API URL</label>
+          <input id="apiUrl" type="text" placeholder="http://127.0.0.1:8000" value="http://127.0.0.1:8000" style="padding:10px; border:1px solid var(--border); border-radius:8px; background:#0d0d0d; color:white;" />
+        </div>
+        <div>
+          <label>Days</label>
+          <select id="daysPreset" style="padding:10px; border:1px solid var(--border); border-radius:8px; background:#0d0d0d; color:white;">
+            <option value="Mon,Tue,Wed,Thu,Fri" selected>Mon–Fri</option>
+            <option value="Mon,Tue,Wed,Thu,Fri,Sat">Mon–Sat</option>
+            <option value="Mon,Tue,Wed,Thu,Fri,Sat,Sun">All days</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap: wrap;">
+        <button id="testBtn">Test Connection</button>
+        <button id="seedBtn">Load Sample Data</button>
+        <button id="quickRunBtn">Quick Run (Test → Seed → Generate)</button>
+      </div>
+    </section>
+
+    <section>
+      <h3>Upload CSV Data</h3>
+      <form id="uploadForm">
+        <div>
+          <label>Teachers CSV</label>
+          <input type="file" name="teachers" accept=".csv" />
+        </div>
+        <div>
+          <label>Rooms CSV</label>
+          <input type="file" name="rooms" accept=".csv" />
+        </div>
+        <div>
+          <label>Sections CSV</label>
+          <input type="file" name="sections" accept=".csv" />
+        </div>
+        <div>
+          <label>Courses CSV</label>
+          <input type="file" name="courses" accept=".csv" />
+        </div>
+        <button type="submit">Upload</button>
+      </form>
+      <button id="generateBtn">Generate Timetable</button>
+    </section>
+
+    <section>
+      <h3>Timetable <span class="badge">Configurable</span></h3>
+      <div id="timetable"></div>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
